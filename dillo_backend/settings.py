@@ -25,9 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-88w560!=1aa-3m(gy8d8=_m6r-l2w1z*qs=@o9b$oajc&w&mf*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'testserver']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'testserver','*']
 
 
 # Application definition
@@ -131,9 +132,10 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
     'http://127.0.0.1:5173',
     'http://127.0.0.1:8000',
+    'https://dillo-frontend.pages.dev',
 ]
 
-FRONTEND_URL = os.environ.get("DILLO_FRONTEND_URL", "http://localhost:5173")
+FRONTEND_URL = os.environ.get("DILLO_FRONTEND_URL", "https://dillo-frontend.pages.dev")
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -149,17 +151,20 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 12,
 }
 
-EMAIL_BACKEND = os.environ.get("DILLO_EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend")
-EMAIL_HOST = os.environ.get("DILLO_EMAIL_HOST", "smtp.example.com")
+EMAIL_BACKEND = os.environ.get("DILLO_EMAIL_BACKEND", "django.core.mail.backends.smtp.EmailBackend")
+EMAIL_HOST = os.environ.get("DILLO_EMAIL_HOST", "smtp.gmail.com")
 EMAIL_PORT = int(os.environ.get("DILLO_EMAIL_PORT", "587"))
 EMAIL_USE_TLS = os.environ.get("DILLO_EMAIL_USE_TLS", "true").lower() in ["true", "1", "yes"]
  
 # ── Set these as environment variables (or hard-code for local dev only) ──────
-EMAIL_HOST_USER = os.environ.get("DILLO_EMAIL_USER", "dummy@example.com")
-EMAIL_HOST_PASSWORD = os.environ.get("DILLO_EMAIL_PASS", "dummy-password")
+EMAIL_HOST_USER = os.environ.get("DILLO_EMAIL_USER", "felizidad31@gmail.com")
+EMAIL_HOST_PASSWORD = os.environ.get("DILLO_EMAIL_PASS", "zhzxzgmguijqqici")
 DEFAULT_FROM_EMAIL = f"Dillo Sarees <{EMAIL_HOST_USER}>"
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
